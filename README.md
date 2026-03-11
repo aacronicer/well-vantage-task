@@ -4,13 +4,13 @@ A NestJS REST API for managing personal workout plans, with Google OAuth2 authen
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Runtime / Package Manager | [Bun](https://bun.sh) 1.x |
-| Framework | NestJS 11 |
-| Database | SQLite (via Prisma 7 + better-sqlite3) |
-| Auth | Google OAuth2 (Passport) + JWT |
-| Language | TypeScript |
+| Layer                     | Technology                             |
+| ------------------------- | -------------------------------------- |
+| Runtime / Package Manager | [Bun](https://bun.sh) 1.x              |
+| Framework                 | NestJS 11                              |
+| Database                  | SQLite (via Prisma 7 + better-sqlite3) |
+| Auth                      | Google OAuth2 (Passport) + JWT         |
+| Language                  | TypeScript                             |
 
 ---
 
@@ -26,7 +26,7 @@ A NestJS REST API for managing personal workout plans, with Google OAuth2 authen
 ### 1. Clone and install dependencies
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/aacronicer/well-vantage-task
 cd well-vantage-tak
 bun install
 ```
@@ -47,6 +47,7 @@ JWT_SECRET="your-jwt-secret-change-me"
 ```
 
 **Google OAuth setup:**
+
 1. Go to [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → Credentials
 2. Create an OAuth 2.0 Client ID (Web application)
 3. Add `http://localhost:3000/auth/google/callback` as an Authorized Redirect URI
@@ -71,14 +72,14 @@ The API will be available at `http://localhost:3000`.
 
 ## Available Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| `start:dev` | `nest start --watch` | Start with hot reload |
-| `start` | `nest start` | Start without watch |
-| `build` | `nest build` | Compile to `dist/` |
-| `start:prod` | `node .` | Run compiled production build |
-| `prisma:migrate` | `prisma migrate dev` | Run migrations |
-| `prisma:generate` | `prisma generate` | Regenerate Prisma client |
+| Script            | Command              | Description                   |
+| ----------------- | -------------------- | ----------------------------- |
+| `start:dev`       | `nest start --watch` | Start with hot reload         |
+| `start`           | `nest start`         | Start without watch           |
+| `build`           | `nest build`         | Compile to `dist/`            |
+| `start:prod`      | `node .`             | Run compiled production build |
+| `prisma:migrate`  | `prisma migrate dev` | Run migrations                |
+| `prisma:generate` | `prisma generate`    | Regenerate Prisma client      |
 
 ---
 
@@ -137,10 +138,10 @@ Create a new workout plan.
 }
 ```
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `title` | `string` | Name of the workout |
-| `description` | `string` | Details about the workout |
+| Field         | Type                | Description                   |
+| ------------- | ------------------- | ----------------------------- |
+| `title`       | `string`            | Name of the workout           |
+| `description` | `string`            | Details about the workout     |
 | `scheduledAt` | `string` (ISO 8601) | When the workout is scheduled |
 
 - **Response `201`:**
@@ -213,24 +214,24 @@ Browser                    API                      Google
 
 ### User
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `string` (cuid) | Primary key |
-| `googleId` | `string` | Google account ID (unique) |
-| `email` | `string` | User email (unique) |
-| `displayName` | `string` | Name from Google profile |
-| `createdAt` | `DateTime` | Account creation timestamp |
+| Field         | Type            | Description                |
+| ------------- | --------------- | -------------------------- |
+| `id`          | `string` (cuid) | Primary key                |
+| `googleId`    | `string`        | Google account ID (unique) |
+| `email`       | `string`        | User email (unique)        |
+| `displayName` | `string`        | Name from Google profile   |
+| `createdAt`   | `DateTime`      | Account creation timestamp |
 
 ### WorkoutPlan
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `string` (cuid) | Primary key |
-| `title` | `string` | Workout title |
-| `description` | `string` | Workout details |
-| `scheduledAt` | `DateTime` | Scheduled date/time |
-| `createdAt` | `DateTime` | Record creation timestamp |
-| `userId` | `string` | Foreign key → User |
+| Field         | Type            | Description               |
+| ------------- | --------------- | ------------------------- |
+| `id`          | `string` (cuid) | Primary key               |
+| `title`       | `string`        | Workout title             |
+| `description` | `string`        | Workout details           |
+| `scheduledAt` | `DateTime`      | Scheduled date/time       |
+| `createdAt`   | `DateTime`      | Record creation timestamp |
+| `userId`      | `string`        | Foreign key → User        |
 
 ---
 
